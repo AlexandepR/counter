@@ -1,5 +1,28 @@
+.blockCounter {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /*align-content: space-around;*/
+    flex-direction: column;
+    border: 3px solid #01088d;
+    border-radius: 10px;
+    height: 150px;
+    width: 150px;
+}
+.blockButton {
+    display: flex;
+    height: 30px;
+    width: 110px;
+    align-content: center;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .errorRed {
     color: red;
     font-size: 16px;
     font-weight: bold;
+}
+.button {
+
 }

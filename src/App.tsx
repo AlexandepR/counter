@@ -1,37 +1,83 @@
-import React, {useEffect, useState} from 'react';
-import './App.css';
-import {Counter} from "./counter";
-import {SetMaxMinValue} from "./SetMaxMinValue";
+import React, {useEffect, useState} from "react";
+import {useDispatch, useSelector} from 'react-redux';
+import {AppStateType} from "./bll/store";
+import style from './counter.module.css'
+
 
 function App() {
-  const [valueCounter, setValueCounter] = useState(0)
-    const [valueStart, setValueStart] = useState()
-    const [inputMax, setInputMax] = useState <number>(1)
-    const [inputMin, setInputMin] = useState <number>(0)
 
-  return (
-    <div className="App">
+    const dispatch = useDispatch()
+    const value = useSelector<AppStateType,number>(state => state.counter.value)
 
-        <SetMaxMinValue
-            setInputMax={setInputMax}
-            setInputMin={setInputMin}
-            inputMax={inputMax}
-            inputMin={inputMin}
-            setValueCounter={setValueCounter}
-        />
-
-        <Counter
-            valueCounter={valueCounter}
-            setValueCounter={setValueCounter}
-            inputMax={inputMax}
-            inputMin={inputMin}
-        />
-
-    </div>
-  );
+    return (
+            <div className={style.blockCounter}>
+                <div className={style.value}>{value}</div>
+                <div className={style.blockButton}>
+            <button className={style.button}>inc</button>
+            <button className={style.button}>reset</button>
+                </div>
+            </div>
+    );
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, {useEffect, useState} from 'react';
+// import './App.css';
+// import {Counter} from "./counter";
+// import {SetMaxMinValue} from "./SetMaxMinValue";
+//
+// function App() {
+//   const [valueCounter, setValueCounter] = useState(0)
+//     const [valueStart, setValueStart] = useState()
+//     const [inputMax, setInputMax] = useState <number>(1)
+//     const [inputMin, setInputMin] = useState <number>(0)
+//
+//   return (
+//     <div className="App">
+//
+//         <SetMaxMinValue
+//             setInputMax={setInputMax}
+//             setInputMin={setInputMin}
+//             inputMax={inputMax}
+//             inputMin={inputMin}
+//             setValueCounter={setValueCounter}
+//         />
+//
+//         <Counter
+//             valueCounter={valueCounter}
+//             setValueCounter={setValueCounter}
+//             inputMax={inputMax}
+//             inputMin={inputMin}
+//         />
+//
+//     </div>
+//   );
+// }
+//
+// export default App;
 
 
 
