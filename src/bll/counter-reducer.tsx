@@ -1,5 +1,6 @@
-const INC_COUNTER = 'INC-COUNTER'
-const RESET_COUNTER = 'RESET-COUNTER'
+// const INC_COUNTER = 'INC-COUNTER'
+// const RESET_COUNTER = 'RESET-COUNTER'
+// const SET_MAX_VALUE = 'SET-MAX-VALUE'
 
 
 const initialState = {
@@ -13,28 +14,49 @@ export type initialStateType = {
     startValue: number
 }
 export type incCounterACType = {
-    type: 'INC_COUNTER'
+    type: 'INC-COUNTER'
     inc: number
 }
-type resetCounterType = {
-    type: 'RESET_COUNTER'
+type setCounterACType = {
+    type: 'SET-COUNTER'
     value: number
 }
+type maxValueACType = {
+    type: 'ONCHANGE-SET-MAX-VALUE'
+    maxValue: number
+}
+type onChangeValueACType = {
+    type: 'ONCHANGE-START-VALUE'
+    startValue: number
+}
 
-export type ActionTypes = incCounterACType | resetCounterType
+export type ActionTypes = incCounterACType |
+    setCounterACType | maxValueACType | onChangeValueACType
 
 export const counterReducer = (state: initialStateType = initialState, action: ActionTypes): initialStateType => {
     switch (action.type) {
-        case 'INC_COUNTER': {
+        case 'INC-COUNTER': {
             return {
                 ...state,
                 value: action.inc + 1
             }
         }
-        case "RESET_COUNTER" :{
+        case 'SET-COUNTER' : {
             return {
                 ...state,
                 value: action.value
+            }
+        }
+        case 'ONCHANGE-SET-MAX-VALUE': {
+            return {
+                ...state,
+                maxValue : action.maxValue
+            }
+        }
+        case 'ONCHANGE-START-VALUE': {
+            return {
+                ...state,
+                startValue: action.startValue
             }
         }
 
@@ -43,9 +65,15 @@ export const counterReducer = (state: initialStateType = initialState, action: A
     }
 }
 
-export const incCounterAC = (inc: number): incCounterACType => {
-    return {type: 'INC_COUNTER', inc}
+export const onChangeValueAC = (startValue:number): onChangeValueACType => {
+    return( { type: 'ONCHANGE-START-VALUE', startValue})
 }
-export const resetCounterAC = (value: number): resetCounterType => {
-    return {type: 'RESET_COUNTER', value}
+export const incCounterAC = (inc: number): incCounterACType => {
+    return {type: 'INC-COUNTER', inc}
+}
+export const setCounterAC = (value: number): setCounterACType => {
+    return {type: 'SET-COUNTER', value}
+}
+export const maxValueAC = (maxValue:number): maxValueACType => {
+    return {type: 'ONCHANGE-SET-MAX-VALUE', maxValue}
 }

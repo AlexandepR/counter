@@ -14,8 +14,8 @@
     display: flex;
     border: 2px solid rgba(198, 147, 13, 0.73);
     height: 30px;
-    width: 110px;
-    align-content: center;
+    width: 120px;
+    /*align-content: center;*/
     justify-content: space-around;
     align-items: center;
 }
@@ -26,7 +26,20 @@
     font-weight: bold;
 }
 .button {
-
+    width: 50px;
+    height: 22px;
+    color: #050505;
+    border-width: 3px 0;
+    /*border-style: solid none;*/
+    border-color: #FDBE33 #000 #D77206;
+    border-radius: 6px;
+    background: linear-gradient(#F3AE0F, #E38916) #E38916;
+    vertical-align: 2px;
+}
+.button:hover {
+    color: #000000;
+    border-color: #ffc54f #000 #ff8e14;
+    background: linear-gradient(#ffcc14, #fabb1a) #fdcc37;
 }
 .value {
     font-size: 20px;
