@@ -11,6 +11,7 @@
 }
 .blockButton {
     display: flex;
+    border: 2px solid #01088d;
     height: 30px;
     width: 110px;
     align-content: center;
@@ -25,4 +26,14 @@
 }
 .button {
 
+}
+.value {
+    font-size: 20px;
+    font-weight: bold;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #01088d;
 }

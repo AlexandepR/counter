@@ -1,47 +1,24 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from 'react-redux';
 import {AppStateType} from "./bll/store";
-import style from './counter.module.css'
+import style from './app.module.css'
+import Counter from "./components/counter";
+import CounterOption from "./components/counterOption";
 
 
 function App() {
 
-    const dispatch = useDispatch()
-    const value = useSelector<AppStateType,number>(state => state.counter.value)
-
     return (
-            <div className={style.blockCounter}>
-                <div className={style.value}>{value}</div>
-                <div className={style.blockButton}>
-            <button className={style.button}>inc</button>
-            <button className={style.button}>reset</button>
-                </div>
-            </div>
+        <div className={style.block}>
+        <div className={style.blockCounters}>
+            <Counter/>
+            <CounterOption/>
+        </div>
+        </div>
     );
 }
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // import React, {useEffect, useState} from 'react';
@@ -78,33 +55,6 @@ export default App;
 // }
 //
 // export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /////////////////////////////////////////////////////// LocalStorage

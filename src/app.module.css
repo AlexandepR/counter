@@ -1,0 +1,38 @@
+.blockCounters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*align-content: space-between;*/
+    flex-direction: row;
+    border: 3px solid #01088d;
+    border-radius: 10px;
+    height: 250px;
+    width: 470px;
+    box-shadow: 0 0 40px 20px gold;
+    background-color: rgb(248, 143, 111);
+}
+.block {
+    /*background-color: rgba(60, 85, 92, 0.86);*/
+    background: url('https://static.vecteezy.com/system/resources/previews/001/201/471/large_2x/splatter-art-png.png');
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/*.blockButton {*/
+/*    display: flex;*/
+/*    height: 30px;*/
+/*    width: 110px;*/
+/*    align-content: center;*/
+/*    justify-content: space-around;*/
+/*    align-items: center;*/
+/*}*/
+
+/*.errorRed {*/
+/*    color: red;*/
+/*    font-size: 16px;*/
+/*    font-weight: bold;*/
+/*}*/
+/*.button {*/
+
+/*}*/

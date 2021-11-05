@@ -1,5 +1,5 @@
 import React from "react";
-import s from  './counter.module.css'
+import s from './components/counter.module.css'
 import {ButtonUniverssal} from "./ButtonUniverssal";
 
 type CounterType = {
