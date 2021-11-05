@@ -11,8 +11,8 @@ function App() {
     return (
         <div className={style.block}>
         <div className={style.blockCounters}>
-            <Counter/>
             <CounterOption/>
+            <Counter/>
         </div>
         </div>
     );
