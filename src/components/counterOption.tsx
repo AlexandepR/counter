@@ -19,6 +19,7 @@ function CounterOption() {
     const dispatch = useDispatch()
 
     const onClickSet = () => {
+        // localStorage.setItem('start value', state.startValue)
         state.setButton = false
         state.maxValue > state.startValue ? dispatch(incButtonAC(state.incButton = false)) : dispatch(incButtonAC(state.incButton = true))
         dispatch(setCounterAC(state.value = startValue))
