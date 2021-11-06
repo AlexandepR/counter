@@ -32,6 +32,17 @@
     border-color: #ffc54f #000 #ff8e14;
     background: linear-gradient(#ffcc14, #fabb1a) #fdcc37;
 }
+.buttonOf{
+    width: 50px;
+    height: 22px;
+    color: #050505;
+    border-width: 3px 0;
+    /*border-style: solid none;*/
+    border-color: rgba(253, 190, 51, 0.51) #000 rgba(215, 114, 6, 0.36);
+    border-radius: 6px;
+    background: linear-gradient(rgba(243, 174, 15, 0.46), rgba(227, 137, 22, 0.47)) rgba(227, 137, 22, 0.51);
+    vertical-align: 2px;
+}
 .setBlock {
     border: 2px solid #8d6501;
     height: 30px;
@@ -43,7 +54,43 @@
 }
 .input {
     width: 50px;
+
 }
+.inputSet {
+    width: 50px;
+    border-color: rgba(253, 190, 51, 0.51) #000 rgba(215, 114, 6, 0.36);
+    border-radius: 6px;
+    background: linear-gradient(rgba(243, 174, 15, 0.46), rgba(227, 137, 22, 0.47)) rgba(227, 137, 22, 0.51);
+}
+.inputError {
+    width: 50px;
+    color: #ff0000;
+    /*font-size: 2.2rem;*/
+    font-weight: bold;
+    animation: flicker 1.5s infinite alternate;
+    /*font-size: 18px;*/
+    font-family: "Helvetica Neue", sans-serif;
+    background-color: rgb(10, 0, 0);
+}
+@keyframes flicker {
+    0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%,100% {
+        text-shadow:
+                0 0 4px #ffffff,
+                0 0 11px #ffffff,
+                0 0 19px #ffffff,
+                0 0 40px #ffffff,
+                0 0 80px #ffffff,
+                0 0 90px #ffffff,
+                0 0 100px #ffffff,
+                0 0 150px #ffffff;
+    }
+    5%, 15%, 25%, 35%, 45%, 55%, 65%, 75%, 85%, 95% {
+        text-shadow: none;
+    }
+}
+
+
+
 .settings{
     font-size: 15px;
     font-weight: bold;

@@ -8,7 +8,7 @@ import {
     maxValueAC,
     onChangeValueAC,
     incCounterAC,
-    incButtonAC, onChangeStartValueAC
+    incButtonAC, onChangeStartValueAC, setButtonAC
 } from "../bll/counter-reducer";
 
 
@@ -19,17 +19,20 @@ function CounterOption() {
     const dispatch = useDispatch()
 
     const onClickSet = () => {
+        state.setButton = false
         state.maxValue > state.startValue ? dispatch(incButtonAC(state.incButton = false)) : dispatch(incButtonAC(state.incButton = true))
         dispatch(setCounterAC(state.value = startValue))
         dispatch(maxValueAC(state.maxValue = maxValue))
-
+        dispatch(setButtonAC(state.setButton = true))
     }
 
     const onChangeMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
+        dispatch(setButtonAC(state.setButton = false))
         // dispatch(maxValueAC(+e.currentTarget.value))
-       return setMaxValue(+e.currentTarget.value)
+        return setMaxValue(+e.currentTarget.value)
     }
     const onChangeValue = (e: ChangeEvent<HTMLInputElement>) => {
+        dispatch(setButtonAC(state.setButton = false))
         dispatch(onChangeStartValueAC(+e.currentTarget.value))
         return setStartValue(+e.currentTarget.value)
 
@@ -40,21 +43,33 @@ function CounterOption() {
             <div className={style.settings}>
                 max value:
                 <input
-                    className={style.input}
+                    className={state.setButton ? style.inputSet : style.input}
                     value={maxValue}
                     onChange={onChangeMaxValue}
+                    type='number'
                 >
                 </input>
                 start value:
                 <input
-                    className={style.input}
+                    className={state.onChangeStartValue < 0
+                        ? style.inputError
+                        : state.setButton
+                            ? style.inputSet
+                        : style.input}
                     value={startValue}
                     onChange={onChangeValue}
+                    type='number'
                 >
                 </input>
             </div>
             <div className={style.setBlock}>
-                <button onClick={onClickSet} className={style.button}>set</button>
+                <button onClick={onClickSet}
+                        className={state.setButton
+                            ? style.buttonOf
+                            : style.button}
+                        disabled={state.setButton}
+                >set
+                </button>
 
             </div>
         </div>

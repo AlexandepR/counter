@@ -8,6 +8,7 @@ const initialState = {
     maxValue: 5,
     startValue: 0,
     incButton: false,
+    setButton: false,
     onChangeStartValue: 0
 }
 export type initialStateType = {
@@ -15,6 +16,7 @@ export type initialStateType = {
     maxValue: number
     startValue: number
     incButton: boolean
+    setButton: boolean
     onChangeStartValue: number
 }
 export type incCounterACType = {
@@ -41,10 +43,14 @@ type onChangeStartValueType = {
     type: 'ON-CHANGE-START-VALUE'
     onChangeStartValue: number
 }
+type setButtonTypeACType = {
+    type: 'TOGGLE-BUTTON-SET'
+    setButton: boolean
+}
 
 export type ActionTypes = incCounterACType | incButtonType |
     setCounterACType | maxValueACType | onChangeValueACType |
-    onChangeStartValueType
+    onChangeStartValueType | setButtonTypeACType
 
 export const counterReducer = (state: initialStateType = initialState, action: ActionTypes): initialStateType => {
     switch (action.type) {
@@ -84,6 +90,12 @@ export const counterReducer = (state: initialStateType = initialState, action: A
                 onChangeStartValue: action.onChangeStartValue
             }
         }
+        case 'TOGGLE-BUTTON-SET': {
+            return {
+                ...state,
+                setButton: action.setButton
+            }
+        }
 
         default:
             return state;
@@ -107,4 +119,7 @@ export const incButtonAC = (incButton: boolean): incButtonType => {
 }
 export const onChangeStartValueAC = (onChangeStartValue:number): onChangeStartValueType => {
     return {type: 'ON-CHANGE-START-VALUE', onChangeStartValue}
+}
+export const setButtonAC = (setButton:boolean): setButtonTypeACType => {
+    return {type: 'TOGGLE-BUTTON-SET', setButton}
 }
