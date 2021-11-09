@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from "react";
+import React, {ChangeEvent, useEffect, useState} from "react";
 import style from './counterOption.module.css'
 import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../bll/store";
@@ -15,11 +15,34 @@ import {
 function CounterOption() {
     const [maxValue, setMaxValue] = useState(+'')
     const [startValue, setStartValue] = useState(+'')
+    const [valueLocalStorage, setValueLocalStorage] = useState('')
     const state = useSelector<AppStateType, initialStateType>(state => state.counter)
     const dispatch = useDispatch()
 
+    // useEffect( () => {
+    //     let valueAsString = localStorage.getItem('start value')
+    //     if (valueAsString) {
+    //         let newValue = JSON.parse(valueAsString)
+    //         setValueLocalStorage(newValue)
+    //         // state.startValue = newValue
+    //     }
+    // })
+    //
+    // useEffect( () => {
+    //     localStorage.setItem('start value', JSON.stringify(state.startValue))
+    // },[valueLocalStorage])
+
+
     const onClickSet = () => {
-        // localStorage.setItem('start value', state.startValue)
+        // let valueAsString = localStorage.getItem('start value')
+        // if (valueAsString) {
+        //     let newValue = JSON.parse(valueAsString)
+        //     setValueLocalStorage(newValue)
+        //     // state.startValue = newValue
+        // }
+
+        localStorage.setItem('start value', JSON.stringify(state.startValue))
+
         state.setButton = false
         state.maxValue > state.startValue ? dispatch(incButtonAC(state.incButton = false)) : dispatch(incButtonAC(state.incButton = true))
         dispatch(setCounterAC(state.value = startValue))
