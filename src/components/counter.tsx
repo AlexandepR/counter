@@ -2,7 +2,7 @@ import React from 'react'
 import style from "./counter.module.css";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../bll/store";
-import {incButtonAC, incCounterAC, initialStateType, setCounterAC} from "../bll/counter-reducer";
+import {incButtonAC, incCounterAC, incValuesTC, initialStateType, setCounterAC} from "../bll/counter-reducer";
 
 
 function Counter() {
@@ -10,6 +10,8 @@ function Counter() {
     const state = useSelector<AppStateType, initialStateType>(state => state.counter)
 
     const incCounter = () => {
+        // debugger
+        dispatch(incValuesTC(state.value))
         state.maxValue > state.value ? dispatch(incCounterAC(state.value)) : dispatch(incButtonAC(state.incButton))
     }
     const resetCounter = () => {

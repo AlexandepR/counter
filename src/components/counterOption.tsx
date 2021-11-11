@@ -8,14 +8,14 @@ import {
     maxValueAC,
     onChangeValueAC,
     incCounterAC,
-    incButtonAC, onChangeStartValueAC, setButtonAC
+    incButtonAC, onChangeStartValueAC, setButtonAC, incValuesTC
 } from "../bll/counter-reducer";
 
 
 function CounterOption() {
     const [maxValue, setMaxValue] = useState(+'')
     const [startValue, setStartValue] = useState(+'')
-    const [valueLocalStorage, setValueLocalStorage] = useState('')
+    // const [valueLocalStorage, setValueLocalStorage] = useState('')
     const state = useSelector<AppStateType, initialStateType>(state => state.counter)
     const dispatch = useDispatch()
 
@@ -34,6 +34,7 @@ function CounterOption() {
 
 
     const onClickSet = () => {
+        dispatch(incValuesTC(state.value))
         // let valueAsString = localStorage.getItem('start value')
         // if (valueAsString) {
         //     let newValue = JSON.parse(valueAsString)
@@ -41,7 +42,7 @@ function CounterOption() {
         //     // state.startValue = newValue
         // }
 
-        localStorage.setItem('start value', JSON.stringify(state.startValue))
+        // localStorage.setItem('start value', JSON.stringify(state.startValue))
 
         state.setButton = false
         state.maxValue > state.startValue ? dispatch(incButtonAC(state.incButton = false)) : dispatch(incButtonAC(state.incButton = true))

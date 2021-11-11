@@ -3,6 +3,8 @@
 // const SET_MAX_VALUE = 'SET-MAX-VALUE'
 
 
+import {Dispatch} from "redux";
+
 const initialState = {
     value: 0,
     maxValue: 5,
@@ -47,11 +49,15 @@ type setButtonTypeACType = {
     type: 'TOGGLE-BUTTON-SET'
     setButton: boolean
 }
+type setValueFromLocalStorageACType = {
+    type: 'SET-VALUE-FROM-LOCAL-STORAGE'
+    value: number
+}
 // type setButtonTypeACType = ReturnType<typeof setButtonAC>
 
 export type ActionTypes = incCounterACType | incButtonType |
     setCounterACType | maxValueACType | onChangeValueACType |
-    onChangeStartValueType | setButtonTypeACType
+    onChangeStartValueType | setButtonTypeACType | setValueFromLocalStorageACType
 
 export const counterReducer = (state: initialStateType = initialState, action: ActionTypes): initialStateType => {
     switch (action.type) {
@@ -97,10 +103,25 @@ export const counterReducer = (state: initialStateType = initialState, action: A
                 setButton: action.setButton
             }
         }
-
+        case 'SET-VALUE-FROM-LOCAL-STORAGE': {
+            return {
+                ...state,
+                value: action.value
+            }
+        }
         default:
             return state;
     }
+}
+
+
+export const incValuesTC = (value:number) => (dispatch: Dispatch) => {
+    localStorage.setItem('counterValue', JSON.stringify(value))
+    dispatch(setCounterAC(value))
+}
+
+export const setValueFromLocalStorageAC = (value: number): setValueFromLocalStorageACType => {
+    return {type:'SET-VALUE-FROM-LOCAL-STORAGE', value}
 }
 
 export const onChangeValueAC = (startValue:number): onChangeValueACType => {
