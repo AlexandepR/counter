@@ -47,6 +47,7 @@ type setButtonTypeACType = {
     type: 'TOGGLE-BUTTON-SET'
     setButton: boolean
 }
+// type setButtonTypeACType = ReturnType<typeof setButtonAC>
 
 export type ActionTypes = incCounterACType | incButtonType |
     setCounterACType | maxValueACType | onChangeValueACType |
