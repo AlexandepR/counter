@@ -114,20 +114,25 @@ export const counterReducer = (state: initialStateType = initialState, action: A
             return state;
     }
 }
+// export const incResetTC = (value: number) => (dispatch: Dispatch, getState: () => AppStateType) => {
+//     let currentValue = getState().counter.value
+//     localStorage.setItem('MyCounterValue', JSON.stringify(currentValue = value))
+//     dispatch(setCounterAC(value))
+// }
 
 
-export const incValuesTC = (value:number) => (dispatch: Dispatch, getState: () => AppStateType) => {
-    let currentValue = getState().counter.value  // получаем значение с localstorage
-    localStorage.setItem('MyCounterValue', JSON.stringify(currentValue + 1)) // записываем данные в localstorage
-    dispatch(setCounterAC(value))
-}
-export const setValueFromLocalStorageTC = () => (dispatch: Dispatch) => {
-    let valueAsString = localStorage.getItem('MyCounterValue')
-    if (valueAsString) {
-        let newValue = JSON.parse(valueAsString)
-        dispatch(setValueFromLocalStorageAC(newValue))
-    }
-}
+// export const incValuesTC = (value:number) => (dispatch: Dispatch, getState: () => AppStateType) => {
+//     let currentValue = getState().counter.value  // получаем пусть к значению в стейте
+//     localStorage.setItem('MyCounterValue', JSON.stringify(currentValue + 1)) // записываем данные в localstorage
+//     dispatch(setCounterAC(value))
+// }
+// export const setValueFromLocalStorageTC = () => (dispatch: Dispatch) => {
+//     let valueAsString = localStorage.getItem('MyCounterValue')
+//     if (valueAsString) {
+//         let newValue = JSON.parse(valueAsString)
+//         dispatch(setValueFromLocalStorageAC(newValue))
+//     }
+// }
 
 
 export const setValueFromLocalStorageAC = (value: number): setValueFromLocalStorageACType => {
