@@ -4,9 +4,21 @@ import {AppStateType} from "./bll/store";
 import style from './app.module.css'
 import Counter from "./components/counter";
 import CounterOption from "./components/counterOption";
+import {incValuesTC, initialStateType, setValueFromLocalStorageTC} from "./bll/counter-reducer";
 
 
 function App() {
+    const state = useSelector<AppStateType, initialStateType> (state => state.counter)
+    const dispatch = useDispatch()
+
+    useEffect( () => {
+        dispatch(setValueFromLocalStorageTC())
+    }, [])
+
+    const incHandler = () => {
+        dispatch(incValuesTC(state.value))
+    }
+
 
     return (
         <div className={style.block}>

@@ -10,7 +10,6 @@ function Counter() {
     const state = useSelector<AppStateType, initialStateType>(state => state.counter)
 
     const incCounter = () => {
-        // debugger
         dispatch(incValuesTC(state.value))
         state.maxValue > state.value ? dispatch(incCounterAC(state.value)) : dispatch(incButtonAC(state.incButton))
     }

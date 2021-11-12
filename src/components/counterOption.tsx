@@ -34,7 +34,7 @@ function CounterOption() {
 
 
     const onClickSet = () => {
-        dispatch(incValuesTC(state.value))
+        // dispatch(incValuesTC(state.value))
         // let valueAsString = localStorage.getItem('start value')
         // if (valueAsString) {
         //     let newValue = JSON.parse(valueAsString)

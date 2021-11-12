@@ -4,6 +4,7 @@
 
 
 import {Dispatch} from "redux";
+import {AppStateType} from "./store";
 
 const initialState = {
     value: 0,
@@ -115,10 +116,19 @@ export const counterReducer = (state: initialStateType = initialState, action: A
 }
 
 
-export const incValuesTC = (value:number) => (dispatch: Dispatch) => {
-    localStorage.setItem('counterValue', JSON.stringify(value))
+export const incValuesTC = (value:number) => (dispatch: Dispatch, getState: () => AppStateType) => {
+    let currentValue = getState().counter.value  // получаем значение с localstorage
+    localStorage.setItem('MyCounterValue', JSON.stringify(currentValue + 1)) // записываем данные в localstorage
     dispatch(setCounterAC(value))
 }
+export const setValueFromLocalStorageTC = () => (dispatch: Dispatch) => {
+    let valueAsString = localStorage.getItem('MyCounterValue')
+    if (valueAsString) {
+        let newValue = JSON.parse(valueAsString)
+        dispatch(setValueFromLocalStorageAC(newValue))
+    }
+}
+
 
 export const setValueFromLocalStorageAC = (value: number): setValueFromLocalStorageACType => {
     return {type:'SET-VALUE-FROM-LOCAL-STORAGE', value}
